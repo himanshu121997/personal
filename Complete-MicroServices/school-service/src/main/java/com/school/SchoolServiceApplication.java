@@ -1,0 +1,28 @@
+package com.school;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
+
+//import com.school.config.RibbonConfiguration;
+
+//@SpringBootApplication(scanBasePackages = { "com.netflix.client.config.IClientConfig", "com.school.*" })
+@SpringBootApplication
+@EnableEurekaClient
+//@RibbonClient(name = "school", configuration = RibbonConfiguration.class)
+public class SchoolServiceApplication {
+
+	@Bean
+	@LoadBalanced
+	public RestTemplate template() {
+		return new RestTemplate();
+	}
+
+	public static void main(String[] args) {
+		SpringApplication.run(SchoolServiceApplication.class, args);
+	}
+
+}

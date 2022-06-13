@@ -1,0 +1,60 @@
+package com.school.control;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+import com.school.model.school;
+import com.school.model.student;
+import com.school.service.schoolService;
+
+@RestController
+public class schoolController {
+
+	@Autowired
+	private schoolService service;
+	
+	@Autowired
+    private RestTemplate template;
+
+	@PostMapping("/addSchool")
+	public String add(school s) {
+		return service.addSchool(s);
+	}
+
+	@GetMapping("/school")
+	public List<school> list() {
+		school s = new school(111, "abcd", "jaipur", Arrays.asList(new student("1", "aaaa")));
+		List<school> list = new ArrayList<school>(Arrays.asList(s));
+//		List<ServiceInstance> instances = client.getInstances("student-service");
+//		System.out.println("server: " + instances);
+//		ServiceInstance instance = instances.get(0);
+//		URI studentUri = instance.getUri();
+//		System.out.println("server: URL " + studentUri);
+		String url = "http://STUDENT-SERVICE/student";
+        return template.getForObject(url,String.class);
+		List<student> s1 = rest.getForObject("http://STUDENT-SERVICE" + "/student", List.class);
+		s.setStudent(s1);
+		list.add(s);
+//		List<school> l = service.findAll(rest);
+//		List<school> l = service.findAll(studentUri);
+		return list;
+	}
+
+	@GetMapping("delete/{id}")
+	public List<school> delete(@PathVariable int id) {
+		return service.removeById(id);
+	}
+
+	@GetMapping("school/{id}")
+	public school findById(@PathVariable int id) {
+		return service.findById(id);
+	}
+}

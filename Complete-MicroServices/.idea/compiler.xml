@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="server" />
+        <module name="student" />
+        <module name="hystrix-Dashboard" />
+        <module name="school" />
+        <module name="cloud-gateway" />
+        <module name="eureka" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="cloud-gateway" target="11" />
+      <module name="eureka" target="11" />
+      <module name="hystrix-Dashboard" target="11" />
+      <module name="school" target="11" />
+      <module name="server" target="11" />
+      <module name="student" target="11" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="cloud-gateway" options="-parameters" />
+      <module name="eureka" options="-parameters" />
+      <module name="hystrix-Dashboard" options="-parameters" />
+      <module name="school" options="-parameters" />
+      <module name="server" options="-parameters" />
+      <module name="student" options="-parameters" />
+    </option>
+  </component>
+</project>

@@ -1,0 +1,6 @@
+Run zookeepar - bin/zookeeper-server-start.sh config/zookeeper.properties
+
+Run kafka producer - bin/kafka-server-start.sh config/server.properties
+
+Run kafka consumer - 
+bin/kafka-console-consumer.sh --topic MyTopic --from-beginning --bootstrap-server localhost:9092

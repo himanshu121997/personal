@@ -1,0 +1,24 @@
+package com.school.config;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+
+//@Configuration
+public class RibbonConfiguration {
+	
+//	@Autowired
+//	IClientConfig ribbonclient;
+//	
+//	@Bean
+//	public IPing ping(IClientConfig rClientConfig) {
+//		return new PingUrl();
+//	}
+//	
+//	@Bean
+//	public IRule rule(IClientConfig rClientConfig) {
+//		return new AvailabilityFilteringRule();
+//	}
+
+}

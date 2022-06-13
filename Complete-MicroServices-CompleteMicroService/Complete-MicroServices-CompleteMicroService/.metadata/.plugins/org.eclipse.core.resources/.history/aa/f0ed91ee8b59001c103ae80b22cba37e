@@ -1,0 +1,50 @@
+package com.school.control;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+import com.school.model.school;
+import com.school.service.schoolService;
+
+@RestController
+public class schoolController {
+
+	@Autowired
+	private schoolService service;
+	
+	@Autowired
+	RestTemplate rest;
+
+	@PostMapping("/addSchool")
+	public String add(school s) {
+		return service.addSchool(s);
+	}
+
+	@GetMapping("/school")
+	public List<school> list() {
+		List<ServiceInstance> instances = client.getInstances("student-service");
+		System.out.println("server: " + instances);
+//		ServiceInstance instance = instances.get(0);
+//		URI studentUri = instance.getUri();
+//		System.out.println("server: URL " + studentUri);
+		List<school> l = service.findAll(rest);
+//		List<school> l = service.findAll(studentUri);
+		return l;
+	}
+
+	@GetMapping("delete/{id}")
+	public List<school> delete(@PathVariable int id) {
+		return service.removeById(id);
+	}
+
+	@GetMapping("school/{id}")
+	public school findById(@PathVariable int id) {
+		return service.findById(id);
+	}
+}

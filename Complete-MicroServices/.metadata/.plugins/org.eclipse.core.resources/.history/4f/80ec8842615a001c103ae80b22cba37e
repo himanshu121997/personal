@@ -1,0 +1,26 @@
+package com.student.control;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.student.model.student;
+
+@RestController
+public class control {
+
+//	@Value("${hello.msg}")
+//	String msg;
+	
+	@GetMapping("/student")
+	public List<student> find() {
+		System.out.println("msg: ");
+		List<student> l = new ArrayList<student>();
+		student s = new student("1", "Himanshu");
+		l.add(s);
+		return l;
+	}
+}

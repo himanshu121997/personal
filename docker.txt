@@ -1,0 +1,40 @@
+docker ps > Check running containers
+
+docker ps -l > check all containers
+
+docker start imageid -> start docker image
+
+docker stop imageid -> stop docker image
+
+docker run -p 8080:8085 image -> access application on port 8080
+
+docker run -d -p 8080:8085 image -> run in detected mode
+
+docker run --name springboot -d -p 8085:8080 -p 8081:8080 docker-springboot --> give name and start container
+
+docker image rm -f imageid = delete image
+
+docker images - checked images
+
+docker container ls - check containers
+
+docker run -d conatiner name: tag - run a container
+
+docker rm $(docker ps -aq) -> delete all containers
+
+docker run --name nginx -v $(pwd):/usr/share/nginx/html:ro -d -p 8080:80 nginx -> Share folder to container in read only
+
+docker run --name nginx -v $(pwd):/usr/share/nginx/html -d -p 8080:80 nginx -> Share folder to container in read and write only
+
+docker exec -it imagename bash - run bash in container
+
+docker build --tag java:latest . - build an image
+
+To prevent any file to be in docker image put it in .dockerignore file
+
+
+docker exec -it imageid psql -U username database - run postgres
+
+docker-compose -f postgres.yml  up
+
+docker-compose -f postgres.yml up --build -- rebuild 

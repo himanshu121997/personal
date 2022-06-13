@@ -1,0 +1,52 @@
+package com.school.repo;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.stereotype.Repository;
+import org.springframework.web.client.RestTemplate;
+
+import com.school.model.school;
+import com.school.model.student;
+
+@Repository
+public class schoolRepo {
+
+	school s = new school(111, "abcd", "jaipur", Arrays.asList(new student("1", "aaaa")));
+	private List<school> list = new ArrayList<school>(Arrays.asList(s));
+
+//	public schoolRepo() {
+////		school s = new school();
+////		s.setSchoolAddress("Jaipur");
+////		s.setSchoolName("abcd");
+////		s.setSchoolId(111);
+////		list.add(s);
+//	}
+
+	public String addSchool(school s1) {
+		list.add(s1);
+		return "school added";
+	}
+
+	public List<school> removeSchoolById(int id) {
+		list.removeIf(s -> s.getSchoolId() == id);
+		return list;
+	}
+
+	public List<school> findAll(RestTemplate rest) {
+//		List<student> s1 = rest.getForObject("http://STUDENT-SERVICE" + "/student", List.class);
+		List<student> s1 = rest.getForObject("http://school" + "/student", List.class);
+//		List<student> s1 = new RestTemplate().getForObject(rest + "/student", List.class);
+		s.setStudent(s1);
+		list.add(s);
+		return list;
+	}
+
+	public school findById(int id) {
+		Optional<school> o = list.stream().filter(s -> s.getSchoolId() == id).findFirst();
+		return o.get();
+	}
+
+}
