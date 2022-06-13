@@ -7,7 +7,7 @@ public class demo {
         int[] num = {1,2,3,4,5,6,7,8,9,10};
 //        even(num);
 //        odd(num);
-
+	System.out.println("hello there");
         Thread t1 = new Thread(() -> odd(num));
         Thread t2 = new Thread(() -> even(num));
         t1.start();
