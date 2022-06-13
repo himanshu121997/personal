@@ -13,7 +13,7 @@ public class demo {
         t1.start();
         t1.join();
         t2.start();
-
+	System.out.println("Hi there");
     }
 
     private static void odd(int[] num) {
